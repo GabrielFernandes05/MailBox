@@ -4,28 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CADASTRO</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style-cadastro.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/-.css') }}">
 {% endblock %}
 
 {% block body %}
-<div class="background">
-    <nav class="nav">
-        <ul>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-        </ul>
-    </nav>
-    <div class="C-form">
-        <h1>Digite um nome de usuario para logar:</h1>
-        <input type="text" id="logincadastro">
-        <h1>Digite a senha para logar:</h1>
-        <input type="password" id="senhacadastro">
-        <h1>Confirme a senha:</h1>
-        <input type="password" id="senhacadastroconfirmar">
-        <button type="button" onclick="Cadastrar2()">Cadastrar</button>
-    </div>
-</div>
+<a href="{{ url_for('login') }}">Login</a>
 
-<script src="./script/script.js"></script>
-<script type="module" src="./script/mongodbscript.js"></script>
+<form action="">
+    <h1>Username</h1>
+    <input type="text" name="username" id="username" placeholder="Digite seu nome de usuario...">
+    <h1>Password</h1>
+    <input type="text" name="password1" id="password1" placeholder="Digite sua senha...">
+    <h1>Confirm password</h1>
+    <input type="text" name="password2" id="password2" placeholder="Confirme sua senha...">
+    <button type="submit">Cadastrar</button>
+</form>
+
 {% endblock %}
