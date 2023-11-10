@@ -1,0 +1,25 @@
+Primeira Parte
+
+
+1 - Criar Conta
+* Verificar se a conta ja existe
+CadastrarConta() ✔
+2 - Logar
+* Verificar se a conta esta cadastrada
+Logar() ✔
+3 - Trocar Informções da conta
+* Atualizar Informções
+AlterarInformações() ✔
+4 - Deletar Usuarios
+* Deletar usuarios partir de confirmações
+DeletarUsuario() ✔
+
+Segunda Parte
+
+1 - Pagina personalizada
+* Possibilidade de deletar a conta
+* Possibilidade de alterar dados
+* Possibilidade de enviar mensagens para outros usuarios
+2 - Manter tudo salvo no MongoDB
+3 - Utilizar o Flask para interface web
+* Estudar uso do javascript no Flask(Se existe e se sim como fazer)
