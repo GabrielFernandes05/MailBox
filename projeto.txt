@@ -1,4 +1,4 @@
-Primeira Parte
+Primeira Parte ✔
 
 
 1 - Criar Conta
@@ -14,7 +14,7 @@ AlterarInformações() ✔
 * Deletar usuarios partir de confirmações
 DeletarUsuario() ✔
 
-Segunda Parte
+Segunda Parte (Diretamente de s1mple, vem ai compl3x)
 
 1 - Pagina personalizada
 * Possibilidade de deletar a conta

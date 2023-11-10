@@ -1,34 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CADASTRO</title>
-    <link rel="stylesheet" href="./css/style-cadastro.css">
-    <link rel="stylesheet" href="./css/-.css">
-</head>
+{% block head %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CADASTRO</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-cadastro.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/-.css') }}">
+{% endblock %}
 
-<body>
-    <div class="background">
-        <nav class="nav">
-            <ul>
-                <li><a href="login.html">Login</a></li>
-            </ul>
-        </nav>
-        <div class="C-form">
-            <h1>Digite um nome de usuario para logar:</h1>
-            <input type="text" id="logincadastro">
-            <h1>Digite a senha para logar:</h1>
-            <input type="password" id="senhacadastro">
-            <h1>Confirme a senha:</h1>
-            <input type="password" id="senhacadastroconfirmar">
-            <button type="button" onclick="Cadastrar2()">Cadastrar</button>
-        </div>
+{% block body %}
+<div class="background">
+    <nav class="nav">
+        <ul>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+    </nav>
+    <div class="C-form">
+        <h1>Digite um nome de usuario para logar:</h1>
+        <input type="text" id="logincadastro">
+        <h1>Digite a senha para logar:</h1>
+        <input type="password" id="senhacadastro">
+        <h1>Confirme a senha:</h1>
+        <input type="password" id="senhacadastroconfirmar">
+        <button type="button" onclick="Cadastrar2()">Cadastrar</button>
     </div>
+</div>
 
-    <script src="./script/script.js"></script>
-    <script type="module" src="./script/mongodbscript.js"></script>
-</body>
-
-</html>
+<script src="./script/script.js"></script>
+<script type="module" src="./script/mongodbscript.js"></script>
+{% endblock %}
