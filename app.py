@@ -13,12 +13,16 @@ def submitcadastro():
     fps.Cadastrar(username, password, password2)
     return redirect(url_for("login"))
 
+
 @app.route("/submitlogin", methods=["POST"])
 def submitlogin():
     username = request.form["username"]
     password = request.form["password"]
-    fps.Login(username, password)
-    return redirect(url_for("inicio"))
+    login_result = fps.Login(username, password)
+    if login_result == "Logado com sucesso":
+        return redirect(url_for("user_page", username=username))
+    else:
+        return login_result
 
 
 @app.route("/cadastro")
