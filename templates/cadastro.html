@@ -9,7 +9,7 @@
 {% block body %}
 <a href="{{ url_for('login') }}">Login</a>
 
-<form action="">
+<form action="/submit" method="post">
     <h1>Username</h1>
     <input type="text" name="username" id="username" placeholder="Digite seu nome de usuario...">
     <h1>Password</h1>

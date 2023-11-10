@@ -10,7 +10,7 @@ def Cadastrar(username, password, password2):
         if password == password2:
             lista_de_ids.sort()
             userid = lista_de_ids[-1] + 1
-            mongodb.InserirUsuario(userid, username, password)
+            mongodb.InserirNovosUsuarios(userid, username, password)
             return "Cadastrado com sucesso"
     else:
         return "Falha ao cadastrar, usuario ja existe ou senha invalida!"
