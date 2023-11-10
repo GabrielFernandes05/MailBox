@@ -5,13 +5,20 @@ import funçõesparaosite as fps
 app = Flask(__name__)
 
 
-@app.route("/submit", methods=["POST"])
-def submit():
+@app.route("/submitcadastro", methods=["POST"])
+def submitcadastro():
     username = request.form["username"]
     password = request.form["password1"]
     password2 = request.form["password2"]
     fps.Cadastrar(username, password, password2)
     return redirect(url_for("login"))
+
+@app.route("/submitlogin", methods=["POST"])
+def submitlogin():
+    username = request.form["username"]
+    password = request.form["password"]
+    fps.Login(username, password)
+    return redirect(url_for("inicio"))
 
 
 @app.route("/cadastro")
