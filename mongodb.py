@@ -143,7 +143,7 @@ def AtualizarUsername(usuario_antigo, usuario_novo):
 
 
 def AdicionarMensagem(destino, msg):
-    data_agora = datetime.datetime.now()
+    data_agora = str(datetime.datetime.now())
     msg.append(data_agora)
     my_doc = my_collection.find_one_and_update(
         {"username": destino}, {"$push": {"inbox": msg}}, new=True
@@ -159,3 +159,7 @@ def AtualizarSenha(senha_antiga, senha_nova):
         print(my_doc["password"])
     else:
         print("Eu não achei nada")
+
+
+def DeletarMensagem1(usuario, msg):
+    my_collection.update_one({"username": usuario}, {"$pull": {"inbox": msg}})

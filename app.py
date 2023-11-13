@@ -66,6 +66,9 @@ def deslogar():
 @app.route("/deletarmensagem", methods=["GET", "POST"])
 def deletarmensagem():
     username = session.get("username")
+    hora = request.form.get("hora")
+    fps.DeletarMensagem(username, hora)
+    return render_template("user_page.html", username=username)
 
 
 @app.route("/cadastro")
