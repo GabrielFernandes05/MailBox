@@ -25,6 +25,8 @@ def submitlogin():
         return login_result
 
 
+@app.route("/user_page")
+
 @app.route("/cadastro")
 def cadastro():
     return render_template("cadastro.html")
