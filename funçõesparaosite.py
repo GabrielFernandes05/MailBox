@@ -5,21 +5,38 @@ def Cadastrar(username, password, password2):
     lista_de_usuarios = []
     lista_de_ids = []
     mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, lista_de_ids, [])
-    if username not in lista_de_usuarios:
+    if mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, lista_de_ids, []) == None:
         if password == password2:
-            lista_de_ids.sort()
-            userid = lista_de_ids[-1] + 1
             novo_usuario = [
                 {
-                    "userid": userid,
+                    "userid": 1,
                     "username": username,
                     "password": password,
+                    "inbox": [],
                 }
             ]
             mb.InserirNovosUsuarios(novo_usuario)
             return "Cadastrado com sucesso"
+        else:
+            return "Falha ao cadastrar, usuario ja existe ou senha invalida!"
     else:
-        return "Falha ao cadastrar, usuario ja existe ou senha invalida!"
+        if username not in lista_de_usuarios:
+            if password == password2:
+                lista_de_ids.sort()
+                userid = lista_de_ids[-1] + 1
+                novo_usuario = [
+                    {
+                        "userid": userid,
+                        "username": username,
+                        "password": password,
+                        "inbox": [],
+                    }
+                ]
+                mb.InserirNovosUsuarios(novo_usuario)
+                return "Cadastrado com sucesso"
+        else:
+            return "Falha ao cadastrar, usuario ja existe ou senha invalida!"
+
 
 def Login(username, password):
     lista_de_usuarios = []
@@ -30,3 +47,13 @@ def Login(username, password):
             return "Logado com sucesso"
         else:
             return "Falha ao logar, senha incorreta!"
+
+
+def ListaDeTodosOsUsuarios():
+    lista_de_usuarios = []
+    mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, [], [])
+    return lista_de_usuarios
+
+def MandarMensagem(usuario, mensagem, destino):
+    msg = [mensagem, f"De {usuario} para {destino}"]
+    mb.AdicionarMensagem(destino, msg)

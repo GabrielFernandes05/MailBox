@@ -82,6 +82,14 @@ def VerificarTodosOsUsuariosEJogarNaLista(lista, ids, senhas):
         print("No documents found.")
 
 
+def VerificarMensagensDoUsuario(username):
+    my_doc = my_collection.find_one({"username": username})
+    if my_doc is not None:
+        return my_doc["inbox"]
+    else:
+        print("Não achei nada")
+
+
 def ProcurarUmUsuario(nome):
     my_doc = my_collection.find_one({"username": nome})
 
@@ -132,6 +140,11 @@ def AtualizarUsername(usuario_antigo, usuario_novo):
     else:
         print("Eu não achei nada")
 
+
+def AdicionarMensagem(destino, msg):
+    my_doc = my_collection.find_one_and_update(
+        {"username" : destino} , {"$push": {"inbox": msg}}, new=True
+    )
 
 def AtualizarSenha(senha_antiga, senha_nova):
     my_doc = my_collection.find_one_and_update(

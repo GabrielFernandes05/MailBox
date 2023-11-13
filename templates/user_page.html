@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{%block head%}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-userpage.css') }}">
+
+{%endblock%}
+{%block body%}
+Ola {{username}}
+
+<div class="C-1">
+    <div class="C-11">
+        <h1>Outros usuarios:</h1>
+        <form action="/mandarmensagem" , method="post">
+            <select name="selectmensagem" id="">
+                {%for valor in lista%}
+                {% if valor != username %}
+                <option value="{{valor}}">{{valor}}</option>
+                {%endif%}
+                {%endfor%}
+            </select>
+            <input type="text" name="mensagem" id="">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <div class="C-12">
+        <form action="/atualizar_lista">
+            <button type="submit">Atualizar</button>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+<h1>Mensgens Recebidas:</h1>
+
+<br>
+<br>
+<form action="/deslogar">
+    <button type="submit">Deslogar</button>
+</form>
+
+
+{%endblock%}
