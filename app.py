@@ -50,11 +50,11 @@ def atualizar_lista():
     return render_template("user_page.html", lista=lista_de_usuarios, username=username)
 
 
-@app.route("/atualizar_mensagens", methods=["GET", "POST"])
-def atualizar_mensagens():
-    username = session.get("username")
-    mensagens = mb.VerificarMensagensDoUsuario(username)
-    return render_template("user_page.html", mensagens=mensagens, username=username)
+# @app.route("/atualizar_mensagens", methods=["GET", "POST"])
+# def atualizar_mensagens():
+#     username = session.get("username")
+#     mensagens = mb.VerificarMensagensDoUsuario(username)
+#     return render_template("user_page.html", mensagens=mensagens, username=username)
 
 
 @app.route("/deslogar")
@@ -63,12 +63,21 @@ def deslogar():
     return redirect(url_for("login"))
 
 
-@app.route("/deletarmensagem", methods=["GET", "POST"])
+@app.route("/deletar", methods=["GET", "POST"])
 def deletarmensagem():
     username = session.get("username")
-    hora = request.form.get("hora")
-    fps.DeletarMensagem(username, hora)
-    return render_template("user_page.html", username=username)
+    mensagens_selecionadas = request.form.getlist("mensagem")
+    mensagens = mb.VerificarMensagensDoUsuario(username)
+    print(mensagens_selecionadas)
+    print(request.form.getlist("mensagem"))
+    print(mensagens)
+    print(request.form)
+    return render_template(
+        "user_page.html",
+        mensagens_selecionadas=mensagens_selecionadas,
+        mensagens=mensagens,
+        username=username,
+    )
 
 
 @app.route("/cadastro")

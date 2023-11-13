@@ -64,9 +64,3 @@ def MandarMensagem(usuario, mensagem, destino):
     msg = [mensagem, f"De {usuario} para {destino}"]
     mb.AdicionarMensagem(destino, msg)
 
-
-def DeletarMensagem(username, hora):
-    mensagens = mb.VerificarMensagensDoUsuario(username)
-    for msg in mensagens:
-        if hora in msg:
-            mb.DeletarMensagem1(username, msg)

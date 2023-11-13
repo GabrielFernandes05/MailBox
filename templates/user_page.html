@@ -31,29 +31,21 @@ Ola {{username}}
 </div>
 <br>
 <br>
+{{hora}}
 <h1>Mensgens Recebidas:</h1>
-<form action="/atualizar_mensagens" method="post">
-    {%for valor in mensagens%}
-    <form action="/deletarmensagem" method="post">
-        <div class="C-2">
-            <div class="C-21">
-                <h2>{{valor[0]}}</h2>
-            </div>
-            <div class="C-22">
-                <h2>{{valor[1]}}</h2>
-            </div>
-        </div>
-        <input name="hora" value="{{valor[2]}}">
-        <button type="submit">Deletar</button>
-    </form>
+
+<form action="/deletar" method="post">
+    {% for valor in mensagens %}
+    <div class="mensagem">
+        <br>
+        <input type="checkbox" name="mensagem" value="{{valor}}">
+        <label>{{valor}}</label>
+        <br>
+    </div>
+    {% endfor %}
     <br>
-    {%endfor%}
-    <br>
-    <button type="submit">Atualizar</button>
+    <button type="submit">Selecionar</button>
 </form>
-
-
-
 <br>
 <br>
 <form action="/deslogar">
