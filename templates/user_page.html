@@ -32,6 +32,27 @@ Ola {{username}}
 <br>
 <br>
 <h1>Mensgens Recebidas:</h1>
+<form action="/atualizar_mensagens" method="post">
+    {%for valor in mensagens%}
+    <form action="/deletarmensagem" method="post">
+        <div class="C-2">
+            <div class="C-21">
+                <h2>{{valor[0]}}</h2>
+            </div>
+            <div class="C-22">
+                <h2>{{valor[1]}}</h2>
+            </div>
+        </div>
+        {{valor[2]}}
+        <button type="submit">Deletar</button>
+    </form>
+    <br>
+    {%endfor%}
+    <br>
+    <button type="submit">Atualizar</button>
+</form>
+
+
 
 <br>
 <br>

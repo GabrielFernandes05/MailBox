@@ -1,5 +1,6 @@
 import pymongo
 import sys
+import datetime
 
 try:
     client = pymongo.MongoClient(
@@ -142,9 +143,12 @@ def AtualizarUsername(usuario_antigo, usuario_novo):
 
 
 def AdicionarMensagem(destino, msg):
+    data_agora = datetime.datetime.now()
+    msg.append(data_agora)
     my_doc = my_collection.find_one_and_update(
-        {"username" : destino} , {"$push": {"inbox": msg}}, new=True
+        {"username": destino}, {"$push": {"inbox": msg}}, new=True
     )
+
 
 def AtualizarSenha(senha_antiga, senha_nova):
     my_doc = my_collection.find_one_and_update(

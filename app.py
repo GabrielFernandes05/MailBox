@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import funçõesparaosite as fps
+import mongodb as mb
 
 app = Flask(__name__)
 app.secret_key = "KJ4g5k2j5G2k4j5G2KJ4g5k2J5G2k4j5gK2J4g"
@@ -49,10 +50,22 @@ def atualizar_lista():
     return render_template("user_page.html", lista=lista_de_usuarios, username=username)
 
 
+@app.route("/atualizar_mensagens", methods=["GET", "POST"])
+def atualizar_mensagens():
+    username = session.get("username")
+    mensagens = mb.VerificarMensagensDoUsuario(username)
+    return render_template("user_page.html", mensagens=mensagens, username=username)
+
+
 @app.route("/deslogar")
 def deslogar():
     session.pop("username", None)
     return redirect(url_for("login"))
+
+
+@app.route("/deletarmensagem", methods=["GET", "POST"])
+def deletarmensagem():
+    username = session.get("username")
 
 
 @app.route("/cadastro")

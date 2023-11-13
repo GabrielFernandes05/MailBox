@@ -5,7 +5,10 @@ def Cadastrar(username, password, password2):
     lista_de_usuarios = []
     lista_de_ids = []
     mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, lista_de_ids, [])
-    if mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, lista_de_ids, []) == None:
+    if (
+        mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, lista_de_ids, [])
+        == None
+    ):
         if password == password2:
             novo_usuario = [
                 {
@@ -47,6 +50,8 @@ def Login(username, password):
             return "Logado com sucesso"
         else:
             return "Falha ao logar, senha incorreta!"
+    else:
+        return "Falha ao logar!"
 
 
 def ListaDeTodosOsUsuarios():
@@ -54,6 +59,15 @@ def ListaDeTodosOsUsuarios():
     mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, [], [])
     return lista_de_usuarios
 
+
 def MandarMensagem(usuario, mensagem, destino):
     msg = [mensagem, f"De {usuario} para {destino}"]
     mb.AdicionarMensagem(destino, msg)
+
+def deletarmensagem(username):
+    mensagens = mb.VerificarMensagensDoUsuario(username)
+    for msg in mensagens:
+        if datetime.datetime(2023, 11, 13, 12, 11, 55, 962000) in msg:
+            print(msg)
+
+deletarmensagem("user2")
