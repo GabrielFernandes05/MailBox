@@ -63,8 +63,8 @@ def deslogar():
     return redirect(url_for("login"))
 
 
-@app.route("/deletar", methods=["GET", "POST"])
-def deletarmensagem():
+@app.route("/vermensagens", methods=["GET", "POST"])
+def vermensagens():
     username = session.get("username")
     mensagens_selecionadas = request.form.getlist("mensagem")
     mensagens = mb.VerificarMensagensDoUsuario(username)
@@ -78,6 +78,15 @@ def deletarmensagem():
         mensagens=mensagens,
         username=username,
     )
+
+
+@app.route("/deletarmensagens", methods=["GET", "POST"])
+def deletarmensagens():
+    username = session.get("username")
+    mensagens = request.form.getlist("deletarmensagens")
+    print(mensagens[0], "Mensagem exibida")
+    mb.DeletarMensagem1(username, mensagens)
+    return render_template("user_page.html", username=session.get("username"))
 
 
 @app.route("/cadastro")

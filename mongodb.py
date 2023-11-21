@@ -162,4 +162,10 @@ def AtualizarSenha(senha_antiga, senha_nova):
 
 
 def DeletarMensagem1(usuario, msg):
-    my_collection.update_one({"username": usuario}, {"$pull": {"inbox": msg}})
+    mensagem = VerificarMensagensDoUsuario(usuario)
+    print(mensagem)
+    print(mensagem[0])
+    for i in range(len(mensagem)):
+        if mensagem[i] == msg:
+            my_collection.update_one({"username": usuario}, {"$pull": {"inbox": msg}})
+            print("Mensagem deletada")

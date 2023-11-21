@@ -34,7 +34,7 @@ Ola {{username}}
 {{hora}}
 <h1>Mensgens Recebidas:</h1>
 
-<form action="/deletar" method="post">
+<form action="/vermensagens" method="post">
     {% for valor in mensagens %}
     <div class="mensagem">
         <br>
@@ -44,7 +44,15 @@ Ola {{username}}
     </div>
     {% endfor %}
     <br>
-    <button type="submit">Selecionar</button>
+    <button type="submit">Ver Mensagens</button>
+</form>
+<form action="/deletarmensagens", method="post">
+    <select name="deletarmensagens" id="">
+        {% for valor in mensagens %}
+        <option value="{{valor}}">{{valor}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Deletar</button>
 </form>
 <br>
 <br>

@@ -63,4 +63,3 @@ def ListaDeTodosOsUsuarios():
 def MandarMensagem(usuario, mensagem, destino):
     msg = [mensagem, f"De {usuario} para {destino}"]
     mb.AdicionarMensagem(destino, msg)
-
