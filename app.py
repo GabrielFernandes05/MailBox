@@ -79,15 +79,6 @@ def deletarmensagens():
     )
 
 
-# @app.route("/deletarmensagens", methods=["GET", "POST"])
-# def deletarmensagens():
-#     username = session.get("username")
-#     mensagens = request.form.getlist("deletarmensagens")
-#     print(mensagens[0], "Mensagem exibida")
-#     mb.DeletarMensagem1(username, mensagens)
-#     return render_template("user_page.html", username=session.get("username"))
-
-
 @app.route("/cadastro")
 def cadastro():
     return render_template("cadastro.html")

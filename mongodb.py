@@ -161,18 +161,11 @@ def AtualizarSenha(senha_antiga, senha_nova):
         print("Eu não achei nada")
 
 
-# def DeletarMensagem1(usuario, msg):
-#     mensagem = VerificarMensagensDoUsuario(usuario)
-#     for i in range(len(mensagem)):
-#         if mensagem[i] == msg:
-#             print("Mensagem encontrada", msg)
-#             my_collection.update_one({"username": usuario}, {"$pull": {"inbox": msg}})
-#             print("Mensagem deletada")
-
 def DeletarMensagem1(usuario, msg):
     def AcharMsg():
         my_doc = my_collection.find_one({"username": usuario})
         return my_doc["inbox"]
+
     mensagens = AcharMsg()
     for c in mensagens:
         if str(c) == str(msg):
