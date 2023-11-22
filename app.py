@@ -98,6 +98,22 @@ def voltarparauserpage():
     username = session.get("username")
     return redirect(url_for("user_page", username=username))
 
+@app.route("/mudarnomedeusuario")
+def mudarnomedeusuario():
+    username = session.get("username")
+    return render_template("configs.html", username=username)
+
+@app.route("/mudarsenhadeusuario")
+def mudarsenhadeusuario():
+    username = session.get("username")
+    return render_template("configs.html", username=username)
+
+@app.route("/deletarconta")
+def deletarconta():
+    username = session.get("username")
+    return redirect(url_for("cadastro"))
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
