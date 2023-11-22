@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-config.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/-.css') }}">
+
+{% endblock %}
+{% block body %}
+
+<h1>Configurações de {{username}}</h1>
+<form action="/voltarparauserpage">
+    <button type="submit">voltarparauserpage</button>
+</form>
+<br>
+
+
+{% endblock %}

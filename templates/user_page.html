@@ -3,11 +3,20 @@
 {%block head%}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style-userpage.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/-.css') }}">
 
 {%endblock%}
 {%block body%}
-Ola {{username}}
-
+<h1>Ola {{username}}</h1>
+<br>
+<form action="/deslogar">
+    <button type="submit">Deslogar</button>
+</form>
+<br>
+<form action="/configs">
+    <button type="submit">Configurações</button>
+</form>
+<br>
 <div class="C-1">
     <div class="C-11">
         <h1>Outros usuarios:</h1>
@@ -48,13 +57,4 @@ Ola {{username}}
     <br>
     <button type="submit">Deletar Mensagens</button>
 </form>
-
-
-<br>
-<br>
-<form action="/deslogar">
-    <button type="submit">Deslogar</button>
-</form>
-
-
 {%endblock%}

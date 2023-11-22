@@ -5,6 +5,16 @@ import mongodb as mb
 app = Flask(__name__)
 app.secret_key = "KJ4g5k2j5G2k4j5G2KJ4g5k2J5G2k4j5gK2J4g"
 
+#Pagina inicial
+@app.route("/")
+def inicio():
+    return redirect(url_for("cadastro"))
+
+#Pagina de cadastro
+@app.route("/cadastro")
+def cadastro():
+    return render_template("cadastro.html")
+
 
 @app.route("/submitcadastro", methods=["POST"])
 def submitcadastro():
@@ -13,6 +23,11 @@ def submitcadastro():
     password2 = request.form["password2"]
     fps.Cadastrar(username, password, password2)
     return redirect(url_for("login"))
+
+#Pagina de login
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 
 @app.route("/submitlogin", methods=["GET", "POST"])
@@ -26,21 +41,23 @@ def submitlogin():
     else:
         return login_result
 
-
-@app.route("/mandarmensagem", methods=["GET", "POST"])
-def mandarmensagem():
-    usuario = session.get("username")
-    destino = request.form.get("selectmensagem")
-    mensagem = request.form.get("mensagem")
-    fps.MandarMensagem(usuario, mensagem, destino)
-    print(f"mensagem:{mensagem}, destino:{destino}, usuario:{usuario}")
-    return redirect(url_for("user_page", username=usuario))
-
-
+#Pagina de usuario
 @app.route("/user_page")
 def user_page():
     username = request.args.get("username")
     return render_template("user_page.html", username=username)
+
+
+@app.route("/deslogar")
+def deslogar():
+    session.pop("username", None)
+    return redirect(url_for("login"))
+
+
+@app.route("/configs")
+def configs():
+    username = session.get("username")
+    return render_template("configs.html", username=username)
 
 
 @app.route("/atualizar_lista", methods=["GET", "POST"])
@@ -50,17 +67,14 @@ def atualizar_lista():
     return render_template("user_page.html", lista=lista_de_usuarios, username=username)
 
 
-# @app.route("/atualizar_mensagens", methods=["GET", "POST"])
-# def atualizar_mensagens():
-#     username = session.get("username")
-#     mensagens = mb.VerificarMensagensDoUsuario(username)
-#     return render_template("user_page.html", mensagens=mensagens, username=username)
-
-
-@app.route("/deslogar")
-def deslogar():
-    session.pop("username", None)
-    return redirect(url_for("login"))
+@app.route("/mandarmensagem", methods=["GET", "POST"])
+def mandarmensagem():
+    usuario = session.get("username")
+    destino = request.form.get("selectmensagem")
+    mensagem = request.form.get("mensagem")
+    fps.MandarMensagem(usuario, mensagem, destino)
+    print(f"mensagem:{mensagem}, destino:{destino}, usuario:{usuario}")
+    return redirect(url_for("user_page", username=usuario))
 
 
 @app.route("/deletarmensagens", methods=["GET", "POST"])
@@ -78,20 +92,11 @@ def deletarmensagens():
         username=username,
     )
 
-
-@app.route("/cadastro")
-def cadastro():
-    return render_template("cadastro.html")
-
-
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
-
-@app.route("/")
-def inicio():
-    return redirect(url_for("cadastro"))
+#Pagina de configurações
+@app.route("/voltarparauserpage")
+def voltarparauserpage():
+    username = session.get("username")
+    return redirect(url_for("user_page", username=username))
 
 
 if __name__ == "__main__":
