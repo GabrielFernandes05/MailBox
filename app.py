@@ -63,15 +63,14 @@ def deslogar():
     return redirect(url_for("login"))
 
 
-@app.route("/vermensagens", methods=["GET", "POST"])
-def vermensagens():
+@app.route("/deletarmensagens", methods=["GET", "POST"])
+def deletarmensagens():
     username = session.get("username")
     mensagens_selecionadas = request.form.getlist("mensagem")
     mensagens = mb.VerificarMensagensDoUsuario(username)
-    print(mensagens_selecionadas)
-    print(request.form.getlist("mensagem"))
-    print(mensagens)
-    print(request.form)
+    for c in mensagens_selecionadas:
+        mb.DeletarMensagem1(username, c)
+        print("Mensagem deletada")
     return render_template(
         "user_page.html",
         mensagens_selecionadas=mensagens_selecionadas,
@@ -80,13 +79,13 @@ def vermensagens():
     )
 
 
-@app.route("/deletarmensagens", methods=["GET", "POST"])
-def deletarmensagens():
-    username = session.get("username")
-    mensagens = request.form.getlist("deletarmensagens")
-    print(mensagens[0], "Mensagem exibida")
-    mb.DeletarMensagem1(username, mensagens)
-    return render_template("user_page.html", username=session.get("username"))
+# @app.route("/deletarmensagens", methods=["GET", "POST"])
+# def deletarmensagens():
+#     username = session.get("username")
+#     mensagens = request.form.getlist("deletarmensagens")
+#     print(mensagens[0], "Mensagem exibida")
+#     mb.DeletarMensagem1(username, mensagens)
+#     return render_template("user_page.html", username=session.get("username"))
 
 
 @app.route("/cadastro")
