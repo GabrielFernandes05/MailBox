@@ -12,6 +12,7 @@ Ola {{username}}
     <div class="C-11">
         <h1>Outros usuarios:</h1>
         <form action="/mandarmensagem" , method="post">
+            <label for="destinatario">Escolha o destinatário da mensagem:</label>
             <select name="selectmensagem" id="destinatario">
                 {%for valor in lista%}
                 {% if valor != username %}
@@ -19,6 +20,7 @@ Ola {{username}}
                 {%endif%}
                 {%endfor%}
             </select>
+            <label for="conteudo">Digite a mensagem:</label>
             <input type="text" name="mensagem" id="conteudo">
             <button type="submit">Enviar</button>
         </form>
