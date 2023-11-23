@@ -5,12 +5,14 @@ import mongodb as mb
 app = Flask(__name__)
 app.secret_key = "KJ4g5k2j5G2k4j5G2KJ4g5k2J5G2k4j5gK2J4g"
 
-#Pagina inicial
+
+# Pagina inicial
 @app.route("/")
 def inicio():
     return redirect(url_for("cadastro"))
 
-#Pagina de cadastro
+
+# Pagina de cadastro
 @app.route("/cadastro")
 def cadastro():
     return render_template("cadastro.html")
@@ -24,7 +26,8 @@ def submitcadastro():
     fps.Cadastrar(username, password, password2)
     return redirect(url_for("login"))
 
-#Pagina de login
+
+# Pagina de login
 @app.route("/login")
 def login():
     return render_template("login.html")
@@ -41,7 +44,8 @@ def submitlogin():
     else:
         return login_result
 
-#Pagina de usuario
+
+# Pagina de usuario
 @app.route("/user_page")
 def user_page():
     username = request.args.get("username")
@@ -92,27 +96,30 @@ def deletarmensagens():
         username=username,
     )
 
-#Pagina de configurações
+
+# Pagina de configurações
 @app.route("/voltarparauserpage")
 def voltarparauserpage():
     username = session.get("username")
     return redirect(url_for("user_page", username=username))
+
 
 @app.route("/mudarnomedeusuario")
 def mudarnomedeusuario():
     username = session.get("username")
     return render_template("configs.html", username=username)
 
+
 @app.route("/mudarsenhadeusuario")
 def mudarsenhadeusuario():
     username = session.get("username")
     return render_template("configs.html", username=username)
 
+
 @app.route("/deletarconta")
 def deletarconta():
     username = session.get("username")
     return redirect(url_for("cadastro"))
-
 
 
 if __name__ == "__main__":
