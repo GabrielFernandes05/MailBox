@@ -104,22 +104,76 @@ def voltarparauserpage():
     return redirect(url_for("user_page", username=username))
 
 
-@app.route("/mudarnomedeusuario")
+@app.route("/mudarnomedeusuario", methods=["POST"])
 def mudarnomedeusuario():
     username = session.get("username")
-    return render_template("configs.html", username=username)
+    print(username)
+    novo_username = request.form["novousername"]
+    print(novo_username)
+    senha = request.form["passwordmudaruser"]
+    print(senha)
+    lista_de_usuarios = []
+    lista_de_senhas = []
+    mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, [], lista_de_senhas)
+    print(lista_de_usuarios)
+    print(lista_de_senhas)
+    if novo_username in lista_de_usuarios:
+        print("Esse nome de usuário já existe")
+    else:
+        print("Esse nome de usuário não existe")
+    if senha in lista_de_senhas:
+        print("Essa senha existe")
+    else:
+        print("Essa senha não existe")
+    if novo_username == username or novo_username in lista_de_usuarios:
+        return "Esse nome de usuário já existe"
+    else:
+        senha_do_usuario = mb.VerificarSenhadeUmUsuario(username)
+        if senha == senha_do_usuario:
+            mb.AtualizarUsername(username, novo_username)
+            session["username"] = novo_username
+            return redirect(url_for("user_page", username=novo_username))
+        else:
+            return "Senha incorreta"
+    return redirect(url_for("configs", username=username))
 
 
-@app.route("/mudarsenhadeusuario")
+@app.route("/mudarsenhadeusuario", methods=["GET", "POST"])
 def mudarsenhadeusuario():
     username = session.get("username")
-    return render_template("configs.html", username=username)
+    print(username)
+    senha1 = request.form["password1"]
+    print(senha1)
+    senha2 = request.form["password2"]
+    print(senha2)
+    senha_atual = request.form["passwordmudarsenha"]
+    print(senha_atual)
+    if senha1 == senha2:
+        if senha1 == senha_atual and senha2 == senha_atual:
+            return "A nova senha não pode ser igual a senha atual"
+        else:
+            senha_do_usuario = mb.VerificarSenhadeUmUsuario(username)
+            if senha_atual == senha_do_usuario:
+                mb.AtualizarSenha(username, senha1)
+                return redirect(url_for("user_page", username=username))
+            else:
+                return "Senha incorreta"
+    else:
+        return "As senhas não são iguais"
+    return redirect(url_for("configs", username=username))
 
 
-@app.route("/deletarconta")
+@app.route("/deletarusuario", methods=["GET", "POST"])
 def deletarconta():
     username = session.get("username")
-    return redirect(url_for("cadastro"))
+    senha = request.form["passworddeletarconta"]
+    senha_do_usuario = mb.VerificarSenhadeUmUsuario(username)
+    if senha == senha_do_usuario:
+        mb.DeletarUsuario(username)
+        return redirect(url_for("cadastro"))
+    else:
+        return "Senha incorreta"
+    return redirect(url_for("configs", username=username))
 
 
 if __name__ == "__main__":

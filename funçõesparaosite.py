@@ -5,10 +5,7 @@ def Cadastrar(username, password, password2):
     lista_de_usuarios = []
     lista_de_ids = []
     mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, lista_de_ids, [])
-    if (
-        mb.VerificarTodosOsUsuariosEJogarNaLista(lista_de_usuarios, lista_de_ids, [])
-        == None
-    ):
+    if lista_de_ids == []:
         if password == password2:
             novo_usuario = [
                 {

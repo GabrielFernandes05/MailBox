@@ -91,6 +91,14 @@ def VerificarMensagensDoUsuario(username):
         print("Não achei nada")
 
 
+def VerificarSenhadeUmUsuario(username):
+    my_doc = my_collection.find_one({"username": username})
+    if my_doc is not None:
+        return my_doc["password"]
+    else:
+        print("Não achei nada")
+
+
 def ProcurarUmUsuario(nome):
     my_doc = my_collection.find_one({"username": nome})
 
@@ -138,8 +146,10 @@ def AtualizarUsername(usuario_antigo, usuario_novo):
     if my_doc is not None:
         print("Lista de usuarios atualizada:")
         print(my_doc["username"])
+        return True
     else:
         print("Eu não achei nada")
+        return False
 
 
 def AdicionarMensagem(destino, msg):
@@ -150,13 +160,13 @@ def AdicionarMensagem(destino, msg):
     )
 
 
-def AtualizarSenha(senha_antiga, senha_nova):
+def AtualizarSenha(username, senha_nova):
     my_doc = my_collection.find_one_and_update(
-        {"password": senha_antiga}, {"$set": {"password": senha_nova}}, new=True
+        {"username": username}, {"$set": {"password": senha_nova}}, new=True
     )
     if my_doc is not None:
         print("Lista de usuarios atualizada:")
-        print(my_doc["password"])
+        print("Senha atualizada com sucesso")
     else:
         print("Eu não achei nada")
 
