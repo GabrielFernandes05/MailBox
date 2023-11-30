@@ -9,17 +9,16 @@ CadastrarConta() ✔
 Logar() ✔
 3 - Trocar Informções da conta
 * Atualizar Informções
-AlterarInformações() ❌
+AlterarInformações() ✔
 4 - Deletar Usuarios
 * Deletar usuarios partir de confirmações
-DeletarUsuario() ❌
+DeletarUsuario() ✔
 
 Segunda Parte (Diretamente de s1mple, vem ai compl3x)
 
 1 - Pagina personalizada
-* Possibilidade de deletar a conta ❌
-* Possibilidade de alterar dados ❌
+* Possibilidade de deletar a conta ✔
+* Possibilidade de alterar dados ✔
 * Possibilidade de enviar mensagens para outros usuarios ✔
 2 - Manter tudo salvo no MongoDB ✔
 3 - Utilizar o Flask para interface web ✔
-* Estudar uso do javascript no Flask(Se existe e se sim como fazer) ❌
