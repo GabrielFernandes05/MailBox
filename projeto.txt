@@ -14,7 +14,7 @@ AlterarInformações() ✔
 * Deletar usuarios partir de confirmações
 DeletarUsuario() ✔
 
-Segunda Parte (Diretamente de s1mple, vem ai compl3x)
+Segunda Parte ✔
 
 1 - Pagina personalizada
 * Possibilidade de deletar a conta ✔
