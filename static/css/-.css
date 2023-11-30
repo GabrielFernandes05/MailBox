@@ -16,7 +16,7 @@
     background-position: center;
     background-image: linear-gradient(purple, rgb(0, 150, 150));
     min-height: 100vh;
-    height: 100%;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;

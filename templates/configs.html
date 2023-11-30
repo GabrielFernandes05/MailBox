@@ -6,37 +6,36 @@
 
 {% endblock %}
 {% block body %}
-
-<h1>Configurações de {{username}}</h1>
-<form action="/voltarparauserpage">
-    <button type="submit">voltarparauserpage</button>
-</form>
-<br>
-<form action="/mudarnomedeusuario" method="post">
-    <h1>Mudar nome de usuario</h1>
-    <h2>Digite o novo nome de usuario</h2>
-    <input type="text" name="novousername" id="novousername" placeholder="Digite seu novo nome de usuario...">
-    <h2>Digite sua senha para confirmar:</h2>
-    <input type="text" name="passwordmudaruser" id="passwordmudaruser" placeholder="Digite sua senha...">
-    <button type="submit">Mudar nome de usuario</button>
-</form>
-
-<form action="/mudarsenhadeusuario" method="post">
-    <h1>Mudar senha de usuario</h1>
-    <h2>Digite sua nova senha:</h2>
-    <input type="text" name="password1" id="password1" placeholder="Digite sua nova senha...">
-    <h2>Confirme sua senha nova:</h2>
-    <input type="text" name="password2" id="password2" placeholder="Confirme sua senha...">
-    <h2>Digite sua senha atual para confirmar:</h2>
-    <input type="text" name="passwordmudarsenha" id="passwordmudarsenha" placeholder="Digite sua senha...">
-    <button type="submit">Mudar senha de usuario</button>
-</form>
-
-<form action="/deletarusuario" method="post">
-    <h1>Deletar usuario</h1>
-    <h2>Digite sua senha para confirmar:</h2>
-    <input type="text" name="passworddeletarconta" id="passworddeletarconta" placeholder="Digite sua senha...">
-    <button type="submit">Deletar usuario</button>
-</form>
-
+<div class="background">
+    <h1 id="h11">Configurações de {{username}}</h1>
+    <form action="/voltarparauserpage">
+        <button class="btn" id="btnh1" type="submit">Voltar...</button>
+    </form>
+    <div class="Container-principal">
+        <form action="/mudarnomedeusuario" method="post">
+            <h1 class="h1p">Mudar nome de usuario</h1>
+            <h2>Digite o novo nome de usuario</h2>
+            <input class="inputs" type="text" name="novousername" id="novousername" placeholder="Digite seu novo nome de usuario...">
+            <h2>Digite sua senha para confirmar</h2>
+            <input class="inputs" type="password" name="passwordmudaruser" id="passwordmudaruser" placeholder="Digite sua senha...">
+            <button class="btn" type="submit">Mudar nome de usuario</button>
+        </form>
+        <form action="/mudarsenhadeusuario" method="post">
+            <h1 class="h1p">Mudar senha de usuario</h1>
+            <h2>Digite sua nova senha</h2>
+            <input class="inputs" type="password" name="password1" id="password1" placeholder="Digite sua nova senha...">
+            <h2>Confirme sua senha nova</h2>
+            <input class="inputs" type="password" name="password2" id="password2" placeholder="Confirme sua senha...">
+            <h2>Digite sua senha atual para confirmar</h2>
+            <input class="inputs" type="password" name="passwordmudarsenha" id="passwordmudarsenha" placeholder="Digite sua senha...">
+            <button class="btn" type="submit">Mudar senha de usuario</button>
+        </form>
+        <form action="/deletarusuario" method="post">
+            <h1 class="h1p">Deletar usuario</h1>
+            <h2>Digite sua senha para confirmar</h2>
+            <input class="inputs" type="password" name="passworddeletarconta" id="passworddeletarconta" placeholder="Digite sua senha...">
+            <button class="btn" type="submit">Deletar usuario</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
