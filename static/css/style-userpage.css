@@ -1,8 +1,8 @@
-*{
+* {
     color: #FDCA40;
 }
 
-.C-1{
+.C-1 {
     padding: 1rem;
     background-color: #33A1FD;
     max-height: 7%;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.C-1btn{
+.C-1btn {
     width: 100%;
     height: 100%;
     display: flex;
@@ -20,7 +20,7 @@
     margin-top: 0.15%;
 }
 
-.C-1btn button{
+.C-1btn button {
     background-color: #2176FF;
     color: #23282b;
     padding: 11%;
@@ -29,16 +29,28 @@
     border-radius: 1rem;
 }
 
-.C-1texto{
+.C-1texto {
     width: 100%;
     height: 100%;
     margin-top: 0.15%;
 }
 
-.C-1texto h1{
+.C-1texto h1 {
     font-size: 2rem;
     font-weight: 400;
     margin-left: 1rem;
     color: #23282b;
 }
 
+.C-2 {
+    padding: 1rem;
+    background-color: #33A1FD;
+    max-height: 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.C-2 hr {
+    border-left: #23282b 3px solid;
+}
