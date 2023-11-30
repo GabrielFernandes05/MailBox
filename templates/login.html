@@ -8,14 +8,19 @@
 {% endblock %}
 
 {% block body %}
-<a href="{{ url_for('cadastro') }}">Cadastro</a>
-<form action="/submitlogin", method="post">
-    <h1>Username</h1>
-    <input type="text" name="username" id="username" placeholder="Digite seu nome de usuario...">
-    <h1>Password</h1>
-    <label for="password" id="labelpasswordlogin">Digite sua senha</label>
-    <input type="text" name="password" id="password">
-    <br>
-    <button type="submit">Login</button>
-</form>
+<div class="background">
+    <nav class="nav1">
+        <a href="{{ url_for('cadastro') }}">Cadastro</a>
+    </nav>
+    <div class="C-Principal">
+        <form action="/submitlogin", method="post">
+            <h1>Usuário</h1>
+            <input type="text" name="username" id="username" placeholder="Digite seu nome de usuario..." class="inputs">
+            <h1>Senha</h1>
+            <label for="password" id="labelpasswordlogin">Digite sua senha</label>
+            <input type="password" name="password" id="password" class="inputs" placeholder="Digite sua senha...">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

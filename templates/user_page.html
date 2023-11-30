@@ -7,54 +7,52 @@
 
 {%endblock%}
 {%block body%}
-<h1>Ola {{username}}</h1>
-<br>
-<form action="/deslogar">
-    <button type="submit">Deslogar</button>
-</form>
-<br>
-<form action="/configs">
-    <button type="submit">Configurações</button>
-</form>
-<br>
-<div class="C-1">
-    <div class="C-11">
-        <h1>Outros usuarios:</h1>
-        <form action="/mandarmensagem" , method="post">
-            <label for="destinatario">Escolha o destinatário da mensagem:</label>
-            <select name="selectmensagem" id="destinatario">
-                {%for valor in lista%}
-                {% if valor != username %}
-                <option value="{{valor}}">{{valor}}</option>
-                {%endif%}
-                {%endfor%}
-            </select>
-            <label for="conteudo">Digite a mensagem:</label>
-            <input type="text" name="mensagem" id="conteudo">
-            <button type="submit">Enviar</button>
-        </form>
+<div class="background2">
+    <div class="C-1">
+        <div class="C-1texto">
+            <h1>Olá {{username}}!</h1>
+        </div>
+        <div class="C-1btn">
+            <form action="/deslogar">
+                <button class="btn" type="submit">Deslogar</button>
+            </form>
+            <form action="/configs">
+                <button class="btn" type="submit">Configurações</button>
+            </form>
+        </div>
     </div>
-    <div class="C-12">
-        <form action="/atualizar_lista">
-            <button type="submit">Atualizar</button>
-        </form>
+    <div class="C-2">
+        <div class="C-2-1">
+            <h1>Outros usuarios:</h1>
+            <form action="/mandarmensagem" , method="post">
+                <label for="destinatario">Escolha o destinatário da mensagem:</label>
+                <select name="selectmensagem" id="destinatario">
+                    {%for valor in lista%}
+                    {% if valor != username %}
+                    <option value="{{valor}}">{{valor}}</option>
+                    {%endif%}
+                    {%endfor%}
+                </select>
+                <label for="conteudo">Digite a mensagem:</label>
+                <input class="inputs" type="text" name="mensagem" id="conteudo">
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+            <form action="/atualizar_lista">
+                <button class="btn" type="submit">Atualizar</button>
+            </form>
+        </div>
+        <div class="C-2-2">
+            <h1>Mensgens Recebidas:</h1>
+            <form action="/deletarmensagens" method="post">
+                {% for valor in mensagens %}
+                <div class="mensagem">
+                    <input type="checkbox" name="mensagem" value="{{valor}}" id="{{valor}}">
+                    <label for="{{valor}}">{{valor}}</label>
+                </div>
+                {% endfor %}
+                <button class="btn" type="submit">Deletar Mensagens</button>
+            </form>
+        </div>
     </div>
 </div>
-<br>
-<br>
-{{hora}}
-<h1>Mensgens Recebidas:</h1>
-
-<form action="/deletarmensagens" method="post">
-    {% for valor in mensagens %}
-    <div class="mensagem">
-        <br>
-        <input type="checkbox" name="mensagem" value="{{valor}}" id="{{valor}}">
-        <label for="{{valor}}">{{valor}}</label>
-        <br>
-    </div>
-    {% endfor %}
-    <br>
-    <button type="submit">Deletar Mensagens</button>
-</form>
 {%endblock%}

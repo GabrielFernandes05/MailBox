@@ -1,0 +1,40 @@
+* {
+    color: rgb(255, 175, 0);
+}
+
+.nav1 {
+    margin-top: 1%;
+    margin-bottom: 10%;
+}
+
+.inputs {
+    padding: 4%;
+    width: 100%;
+    background-color: rgb(255, 50, 90);
+    border-radius: 1rem;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    color: whitesmoke;
+}
+
+.inputs::placeholder {
+    color: whitesmoke;
+}
+
+.C-Principal button {
+    border-radius: 1rem;
+    padding: 4%;
+    background-color: rgb(255, 50, 90);
+    color: whitesmoke;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 10%;
+    font-size: 120%;
+    font-style: bold;
+}
+
+.C-Principal button:hover {
+    transition: 0.3s;
+    background-color: rgb(245, 40, 80);
+}
